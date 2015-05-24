@@ -21,6 +21,7 @@ namespace TopologyGenerator
         private NetHosts netHosts = new NetHosts();
         private List<ToolTip> tips = new List<ToolTip>();
 
+
         public TopologyWnd(Matrix input, NetHosts netHosts)
         {
             InitializeComponent();
@@ -99,21 +100,22 @@ namespace TopologyGenerator
 
         private void TopologyPBox_MouseMove(object sender, MouseEventArgs e)
         {
-            for (int i = 0; i < netHosts.listOfHostRectangles.Count; i++)
-            {
-                if (netHosts.listOfHostRectangles[i].rectangle.Contains(e.X, e.Y))
-                {
-                    string name = netHosts.listOfHostRectangles[i].netHost.GetFileName();
-                    netHosts.listOfHostRectangles[i].netHost.tip.Show(name, this, e.X, e.Y);
-                }
-                else
-                {
-                    netHosts.listOfHostRectangles[i].netHost.tip.Hide(this);
-                }
-            }
-
             if (mPointMoveInProgress != 0 || points != null)
             {
+
+                for (int j = 0; j < netHosts.listOfHostRectangles.Count; j++)
+                {
+                    if (netHosts.listOfHostRectangles[j].rectangle.Contains(e.X, e.Y))
+                    {
+                        string name = netHosts.listOfHostRectangles[j].netHost.GetFileName();
+                        netHosts.listOfHostRectangles[j].netHost.tip.Show(name, this, e.X, e.Y);
+                    }
+                    else
+                    {
+                        netHosts.listOfHostRectangles[j].netHost.tip.Hide(this);
+                    }
+                }
+
                 for (int i = 0; i < points.Length; i++)
                 {
                     if (mPointMoveInProgress == i + 1)
