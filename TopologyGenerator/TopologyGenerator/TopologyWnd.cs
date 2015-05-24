@@ -20,6 +20,7 @@ namespace TopologyGenerator
         private List<Rectangle> rectangles = new List<Rectangle>();
         private NetHosts netHosts = new NetHosts();
         private List<ToolTip> tips = new List<ToolTip>();
+        private Point location;
 
 
         public TopologyWnd(Matrix input, NetHosts netHosts)
@@ -100,13 +101,17 @@ namespace TopologyGenerator
 
         private void TopologyPBox_MouseMove(object sender, MouseEventArgs e)
         {
+            if (location == e.Location)
+                return;
+
             if (mPointMoveInProgress != 0 || points != null)
             {
 
                 for (int j = 0; j < netHosts.listOfHostRectangles.Count; j++)
                 {
-                    if (netHosts.listOfHostRectangles[j].rectangle.Contains(e.X, e.Y))
+                    if (netHosts.listOfHostRectangles[j].rectangle.Contains(e.Location))
                     {
+                        location = e.Location;
                         string name = netHosts.listOfHostRectangles[j].netHost.GetFileName();
                         netHosts.listOfHostRectangles[j].netHost.tip.Show(name, this, e.X, e.Y);
                     }
@@ -122,8 +127,7 @@ namespace TopologyGenerator
                     {
                         points[i].X = e.X;
                         points[i].Y = e.Y;
-                        Refresh();
-
+                        TopologyPBox.Refresh();
                         break;
                     }
                 }

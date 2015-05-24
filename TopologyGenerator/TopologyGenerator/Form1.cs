@@ -22,6 +22,7 @@ namespace TopologyGenerator
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
+            this.DoubleBuffered = true;
         }
 
         private void LoadFileButton_Click(object sender, EventArgs e)
