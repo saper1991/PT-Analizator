@@ -18,12 +18,15 @@ namespace TopologyGenerator
         private int radius = 20;
         private int mPointMoveInProgress = 0;
         private List<Rectangle> rectangles = new List<Rectangle>();
+        private NetHosts netHosts = new NetHosts();
+        private List<ToolTip> tips = new List<ToolTip>();
 
-        public TopologyWnd(Matrix input)
+        public TopologyWnd(Matrix input, NetHosts netHosts)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
+            this.netHosts = netHosts;
 
             matrix = input.getMatrix();
             count = input.getHosts().Length;
@@ -35,17 +38,14 @@ namespace TopologyGenerator
             }
         }
 
+        public static Image resizeImage(Image imgToResize, Size size)
+        {
+           return (Image)(new Bitmap(imgToResize, size));
+        }
+
         private void TopologyPBox_Paint(object sender, PaintEventArgs e)
         {
             Rectangle rectangle;
-
-            for (int i = 0; i < count; i++)
-            {
-                rectangle = new Rectangle(points[i].X - radius, points[i].Y - radius, radius * 2, radius * 2);
-                e.Graphics.FillRectangle(Brushes.White, rectangle);
-                e.Graphics.DrawRectangle(Pens.Black, rectangle);
-                rectangles.Add(rectangle);
-            }
 
             for (int i = 0; i < count; i++)
             {
@@ -56,6 +56,27 @@ namespace TopologyGenerator
                         e.Graphics.DrawLine(new Pen(Color.Black, 2), points[i], points[j]);
                     }
                 }
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                Image newImage = null;
+                if(netHosts.getListOfHosts()[i].GetIfRouter() == false)
+                    newImage = Image.FromFile("1.png");
+                else
+                    newImage = Image.FromFile("11.png");
+
+                rectangle = new Rectangle(points[i].X - radius, points[i].Y - radius, radius * 2, radius + radius / 2 + radius / 4);
+                Rectangle source = new Rectangle(points[i].X - radius, points[i].Y - radius, radius * 2, radius + radius / 2 + radius / 4);
+                newImage = resizeImage(newImage, new Size(40, 30));
+
+                GraphicsUnit units = GraphicsUnit.Pixel;
+                //e.Graphics.FillRectangle(Brushes.White, rectangle);
+                //e.Graphics.DrawRectangle(Pens.Black, rectangle);
+
+                e.Graphics.DrawImageUnscaledAndClipped(newImage, rectangle);
+                //rectangles.Add(rectangle);
+                netHosts.addSetHostRectangle(netHosts.getListOfHosts()[i], rectangle);
             }
         }
 
@@ -78,6 +99,19 @@ namespace TopologyGenerator
 
         private void TopologyPBox_MouseMove(object sender, MouseEventArgs e)
         {
+            for (int i = 0; i < netHosts.listOfHostRectangles.Count; i++)
+            {
+                if (netHosts.listOfHostRectangles[i].rectangle.Contains(e.X, e.Y))
+                {
+                    string name = netHosts.listOfHostRectangles[i].netHost.GetFileName();
+                    netHosts.listOfHostRectangles[i].netHost.tip.Show(name, this, e.X, e.Y);
+                }
+                else
+                {
+                    netHosts.listOfHostRectangles[i].netHost.tip.Hide(this);
+                }
+            }
+
             if (mPointMoveInProgress != 0 || points != null)
             {
                 for (int i = 0; i < points.Length; i++)
@@ -92,6 +126,7 @@ namespace TopologyGenerator
                     }
                 }
             }
+            
         }
 
         private void TopologyPBox_MouseUp(object sender, MouseEventArgs e)

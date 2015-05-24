@@ -18,3 +18,12 @@ c:\Users\Shakecaine\Downloads\PT-Projekt-master\PT-Projekt-master\TopologyGenera
 c:\Users\Shakecaine\Downloads\PT-Projekt-master\PT-Projekt-master\TopologyGenerator\TopologyGenerator\obj\Debug\TopologyGenerator.Properties.Resources.resources
 c:\Users\Shakecaine\Downloads\PT-Projekt-master\PT-Projekt-master\TopologyGenerator\TopologyGenerator\obj\Debug\TopologyGenerator.TopologyWnd.resources
 c:\Users\Shakecaine\Downloads\PT-Projekt-master\PT-Projekt-master\TopologyGenerator\TopologyGenerator\obj\Debug\TopologyGenerator.csproj.GenerateResource.Cache
+C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\TopologyGenerator\obj\Debug\TopologyGenerator.MainWnd.resources
+C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\TopologyGenerator\obj\Debug\TopologyGenerator.Properties.Resources.resources
+C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\TopologyGenerator\obj\Debug\TopologyGenerator.TopologyWnd.resources
+C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\TopologyGenerator\obj\Debug\TopologyGenerator.csproj.GenerateResource.Cache
+C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\TopologyGenerator\bin\Debug\TopologyGenerator.exe.config
+C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\TopologyGenerator\bin\Debug\TopologyGenerator.exe
+C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\TopologyGenerator\bin\Debug\TopologyGenerator.pdb
+C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\TopologyGenerator\obj\Debug\TopologyGenerator.exe
+C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\TopologyGenerator\obj\Debug\TopologyGenerator.pdb

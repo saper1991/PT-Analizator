@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TopologyGenerator
 {
@@ -12,15 +13,23 @@ namespace TopologyGenerator
         private string FileName;
         public List<HostRecord> ListOfRecords = new List<HostRecord>();
         private string[] Hosts;
+        private Boolean router;
+        public ToolTip tip = new ToolTip();
 
-        public NetHost(string FileName)
+        public NetHost(string FileName, Boolean router)
         {
             this.FileName = FileName;
+            this.router = router;
         }
 
         public void addRecord(HostRecord input)
         {
             ListOfRecords.Add(input);
+        }
+
+        public Boolean GetIfRouter()
+        {
+            return router;
         }
 
         public string GetFileName()

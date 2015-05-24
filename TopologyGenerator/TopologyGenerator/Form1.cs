@@ -15,6 +15,7 @@ namespace TopologyGenerator
     {
 
         public List<NetHost> ListOfFiles = new List<NetHost>();
+        private NetHosts netHosts = new NetHosts();
 
         public MainWnd()
         {
@@ -26,7 +27,7 @@ namespace TopologyGenerator
         private void LoadFileButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Pliki .ethan (*.ethan)|*.ethan | Wszystkie pliki (*.*)|*.*";
+            ofd.Filter = "Pliki .ethan (*.ethan)|*.ethan|Wszystkie pliki (*.*)|*.*";
             DialogResult dr = ofd.ShowDialog();
 
             if(dr == DialogResult.OK)
@@ -35,7 +36,16 @@ namespace TopologyGenerator
                 FileStream fs = new FileStream(ofd.FileName, FileMode.Open);
                 StreamReader sr = new StreamReader(fs);
 
-                NetHost newhost = new NetHost(ofd.SafeFileName);
+                NetHost newhost = null;
+
+                if (ofd.SafeFileName[0] == 'R')
+                {
+                    newhost = new NetHost(ofd.SafeFileName, true);
+                }
+                else
+                {
+                    newhost = new NetHost(ofd.SafeFileName, false);
+                }
 
                 while(!sr.EndOfStream)
                 {
@@ -105,7 +115,9 @@ namespace TopologyGenerator
 
                 }
 
+                netHosts.addNetHost(newhost);
                 ListOfFiles.Add(newhost);
+                
                 listOfFilesListBox.Items.Add(ofd.SafeFileName);
 
                 sr.Close();
@@ -143,7 +155,7 @@ namespace TopologyGenerator
 
             Matrix matr = new Matrix(ListOfFiles);
 
-            TopologyWnd tplg = new TopologyWnd(matr);
+            TopologyWnd tplg = new TopologyWnd(matr, netHosts);
             tplg.Show();
         }
 
