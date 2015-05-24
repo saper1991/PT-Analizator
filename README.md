@@ -1,0 +1,1 @@
+# PT-Analizator
