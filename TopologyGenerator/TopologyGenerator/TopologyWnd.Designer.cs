@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.CloseButton = new System.Windows.Forms.Button();
             this.TopologyPBox = new System.Windows.Forms.PictureBox();
+            this.CloseButton = new System.Windows.Forms.Button();
+            this.screenCaptureButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TopologyPBox)).BeginInit();
             this.SuspendLayout();
@@ -43,20 +44,11 @@
             this.groupBox1.Size = new System.Drawing.Size(630, 335);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Widok Topologii";
-            // 
-            // CloseButton
-            // 
-            this.CloseButton.Location = new System.Drawing.Point(246, 364);
-            this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(162, 29);
-            this.CloseButton.TabIndex = 1;
-            this.CloseButton.Text = "Zamknij";
-            this.CloseButton.UseVisualStyleBackColor = true;
-            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            this.groupBox1.Text = "Wygenerowana topologia";
             // 
             // TopologyPBox
             // 
+            this.TopologyPBox.BackColor = System.Drawing.Color.White;
             this.TopologyPBox.Location = new System.Drawing.Point(6, 19);
             this.TopologyPBox.Name = "TopologyPBox";
             this.TopologyPBox.Size = new System.Drawing.Size(618, 310);
@@ -67,12 +59,33 @@
             this.TopologyPBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopologyPBox_MouseMove);
             this.TopologyPBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopologyPBox_MouseUp);
             // 
+            // CloseButton
+            // 
+            this.CloseButton.Location = new System.Drawing.Point(474, 364);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(162, 29);
+            this.CloseButton.TabIndex = 1;
+            this.CloseButton.Text = "Zamknij";
+            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            // 
+            // screenCaptureButton
+            // 
+            this.screenCaptureButton.Location = new System.Drawing.Point(18, 364);
+            this.screenCaptureButton.Name = "screenCaptureButton";
+            this.screenCaptureButton.Size = new System.Drawing.Size(162, 29);
+            this.screenCaptureButton.TabIndex = 2;
+            this.screenCaptureButton.Text = "Zapisz jako obraz";
+            this.screenCaptureButton.UseVisualStyleBackColor = true;
+            this.screenCaptureButton.Click += new System.EventHandler(this.screenCaptureButton_Click);
+            // 
             // TopologyWnd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(654, 405);
             this.ControlBox = false;
+            this.Controls.Add(this.screenCaptureButton);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.groupBox1);
             this.Name = "TopologyWnd";
@@ -87,5 +100,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox TopologyPBox;
         private System.Windows.Forms.Button CloseButton;
+        private System.Windows.Forms.Button screenCaptureButton;
     }
 }

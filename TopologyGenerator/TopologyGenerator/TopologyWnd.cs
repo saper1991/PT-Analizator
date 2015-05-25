@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
 namespace TopologyGenerator
 {
     public partial class TopologyWnd : Form
@@ -144,6 +144,27 @@ namespace TopologyGenerator
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void screenCaptureButton_Click(object sender, EventArgs e)
+        {
+            System.Threading.Thread.Sleep(1000);
+
+            SendKeys.Send("{PRTSC}");
+            Image img = Clipboard.GetImage();
+            
+
+            SaveFileDialog save = new SaveFileDialog();
+            save.Title = "Zapisz obraz";
+            save.Filter = "Obrazy (*.png, *.jpg) | *.png; *.jpg";
+
+            if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path = save.FileName;
+
+                img.Save(path);
+                
+            }
         }
 
 
