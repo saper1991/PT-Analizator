@@ -163,8 +163,10 @@ namespace TopologyGenerator
                 string path = save.FileName;
 
                 img.Save(path);
+                MessageBox.Show("Obraz zapisano pomyślnie");
                 
             }
+
         }
 
 

@@ -65,7 +65,7 @@
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(162, 29);
             this.CloseButton.TabIndex = 1;
-            this.CloseButton.Text = "Zamknij";
+            this.CloseButton.Text = "Zamknij okno";
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 

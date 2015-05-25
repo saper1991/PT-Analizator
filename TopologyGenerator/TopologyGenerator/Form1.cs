@@ -203,5 +203,10 @@ namespace TopologyGenerator
 
             return results.ToArray();
         }
+
+        private void clearAllButton_Click(object sender, EventArgs e)
+        {
+            listOfFilesListBox.Items.Clear();
+        }
     }
 }
