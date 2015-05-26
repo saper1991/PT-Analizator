@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
+
 namespace TopologyGenerator
 {
     public partial class TopologyWnd : Form
@@ -148,11 +150,8 @@ namespace TopologyGenerator
 
         private void screenCaptureButton_Click(object sender, EventArgs e)
         {
-            System.Threading.Thread.Sleep(1000);
 
-            SendKeys.Send("{PRTSC}");
-            Image img = Clipboard.GetImage();
-            
+            var frm = Form.ActiveForm;
 
             SaveFileDialog save = new SaveFileDialog();
             save.Title = "Zapisz obraz";
@@ -162,10 +161,19 @@ namespace TopologyGenerator
             {
                 string path = save.FileName;
 
-                img.Save(path);
+                using (var bmp = new Bitmap(frm.Width, frm.Height))
+                {
+                    frm.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                    bmp.Save(path);
+                    //@"C:\Users\Laura\Desktop\screenshot.png"
+                }
+               
                 MessageBox.Show("Obraz zapisano pomyślnie");
                 
             }
+
+           
+            
 
         }
 
