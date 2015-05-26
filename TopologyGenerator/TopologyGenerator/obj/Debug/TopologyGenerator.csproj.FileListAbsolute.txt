@@ -27,4 +27,3 @@ C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\TopologyGenerat
 C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\TopologyGenerator\bin\Debug\TopologyGenerator.pdb
 C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\TopologyGenerator\obj\Debug\TopologyGenerator.exe
 C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\TopologyGenerator\obj\Debug\TopologyGenerator.pdb
-C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\TopologyGenerator\obj\Debug\TopologyGenerator.csprojResolveAssemblyReference.cache

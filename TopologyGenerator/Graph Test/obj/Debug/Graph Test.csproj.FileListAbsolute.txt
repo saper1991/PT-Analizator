@@ -24,3 +24,4 @@ C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\Graph Test\obj\
 C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\Graph Test\obj\Debug\Graph Test.csproj.GenerateResource.Cache
 C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\Graph Test\obj\Debug\Graph Test.exe
 C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\Graph Test\obj\Debug\Graph Test.pdb
+C:\Users\Shaker\Documents\GitHub\PT-Analizator\TopologyGenerator\Graph Test\obj\Debug\Graph Test.csprojResolveAssemblyReference.cache

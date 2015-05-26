@@ -32,6 +32,7 @@
             this.TopologyPBox = new System.Windows.Forms.PictureBox();
             this.CloseButton = new System.Windows.Forms.Button();
             this.screenCaptureButton = new System.Windows.Forms.Button();
+            this.tooltipadresses = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TopologyPBox)).BeginInit();
             this.SuspendLayout();
@@ -91,6 +92,20 @@
             this.screenCaptureButton.UseVisualStyleBackColor = false;
             this.screenCaptureButton.Click += new System.EventHandler(this.screenCaptureButton_Click);
             // 
+            // tooltipadresses
+            // 
+            this.tooltipadresses.BackColor = System.Drawing.Color.White;
+            this.tooltipadresses.FlatAppearance.BorderSize = 0;
+            this.tooltipadresses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tooltipadresses.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tooltipadresses.Location = new System.Drawing.Point(261, 375);
+            this.tooltipadresses.Name = "tooltipadresses";
+            this.tooltipadresses.Size = new System.Drawing.Size(162, 29);
+            this.tooltipadresses.TabIndex = 3;
+            this.tooltipadresses.Text = "pokaż adresy";
+            this.tooltipadresses.UseVisualStyleBackColor = false;
+            this.tooltipadresses.Click += new System.EventHandler(this.tooltipadresses_Click);
+            // 
             // TopologyWnd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -98,6 +113,7 @@
             this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.ClientSize = new System.Drawing.Size(675, 416);
             this.ControlBox = false;
+            this.Controls.Add(this.tooltipadresses);
             this.Controls.Add(this.screenCaptureButton);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.groupBox1);
@@ -117,5 +133,6 @@
         private System.Windows.Forms.PictureBox TopologyPBox;
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button screenCaptureButton;
+        private System.Windows.Forms.Button tooltipadresses;
     }
 }

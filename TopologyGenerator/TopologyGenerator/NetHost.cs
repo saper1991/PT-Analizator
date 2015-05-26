@@ -15,6 +15,8 @@ namespace TopologyGenerator
         private string[] Hosts;
         private Boolean router;
         public ToolTip tip = new ToolTip();
+        public ToolTip adresstip1 = new ToolTip();
+        public ToolTip adresstip2 = new ToolTip();
 
         public NetHost(string FileName, Boolean router)
         {

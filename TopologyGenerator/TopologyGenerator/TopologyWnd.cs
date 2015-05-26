@@ -16,7 +16,7 @@ namespace TopologyGenerator
     {
         private int[,] matrix = null;
         private int count = 0;
-        private Point[] points = null;
+        private List<PointToText> points = new List<PointToText>();
         private int radius = 20;
         private int mPointMoveInProgress = 0;
         private List<Rectangle> rectangles = new List<Rectangle>();
@@ -35,10 +35,18 @@ namespace TopologyGenerator
             matrix = input.getMatrix();
             count = input.getHosts().Length;
 
-            points = new Point[count];
             for (int i = 0; i < count; i++)
             {
-                points[i] = new Point(50, i * 40);
+                points.Add(new PointToText(new Point(300, 200)));
+                if (!netHosts.listOfHosts[i].GetIfRouter())
+                    points[i].text.Add(netHosts.listOfHosts[i].ListOfRecords[0].GetEthMAC());
+                else
+                {
+                    for (int j = 0; j < netHosts.listOfHosts[i].ListOfRecords.Count; j++)
+                    {
+                        points[i].text.Add(netHosts.listOfHosts[i].ListOfRecords[j].GetEthMAC());
+                    }
+                }
             }
         }
 
@@ -57,7 +65,7 @@ namespace TopologyGenerator
                 {
                     if (matrix[i, j] == 1)
                     {
-                        e.Graphics.DrawLine(new Pen(Color.Black, 2), points[i], points[j]);
+                        e.Graphics.DrawLine(new Pen(Color.Black, 2), points[i].getPoint(), points[j].getPoint());
                     }
                 }
             }
@@ -70,8 +78,8 @@ namespace TopologyGenerator
                 else
                     newImage = Image.FromFile("11.png");
 
-                rectangle = new Rectangle(points[i].X - radius, points[i].Y - radius, radius * 2, radius + radius / 2 + radius / 4);
-                Rectangle source = new Rectangle(points[i].X - radius, points[i].Y - radius, radius * 2, radius + radius / 2 + radius / 4);
+                rectangle = new Rectangle(points[i].point.X - radius, points[i].point.Y - radius, radius * 2, radius + radius / 2 + radius / 4);
+                Rectangle source = new Rectangle(points[i].point.X - radius, points[i].point.Y - radius, radius * 2, radius + radius / 2 + radius / 4);
                 newImage = resizeImage(newImage, new Size(40, 30));
 
                 GraphicsUnit units = GraphicsUnit.Pixel;
@@ -90,9 +98,9 @@ namespace TopologyGenerator
             {
                 mPointMoveInProgress = 0;
 
-                for (int i = 0; i < points.Length; i++)
+                for (int i = 0; i < points.Count; i++)
                 {
-                    if (Math.Abs(e.X - points[i].X) < radius && Math.Abs(e.Y - points[i].Y) < radius)
+                    if (Math.Abs(e.X - points[i].getPoint().X) < radius && Math.Abs(e.Y - points[i].getPoint().Y) < radius)
                     {
                         mPointMoveInProgress = i + 1;
                         break;
@@ -115,20 +123,22 @@ namespace TopologyGenerator
                     {
                         location = e.Location;
                         string name = netHosts.listOfHostRectangles[j].netHost.GetFileName();
-                        netHosts.listOfHostRectangles[j].netHost.tip.Show(name, this, e.X, e.Y);
+                        netHosts.listOfHostRectangles[j].netHost.tip.Show(name, this, e.X, e.Y + 30);
                     }
                     else
                     {
                         netHosts.listOfHostRectangles[j].netHost.tip.Hide(this);
+                        netHosts.listOfHostRectangles[j].netHost.adresstip1.Hide(this);
+                        netHosts.listOfHostRectangles[j].netHost.adresstip2.Hide(this);
                     }
                 }
 
-                for (int i = 0; i < points.Length; i++)
+                for (int i = 0; i < points.Count; i++)
                 {
                     if (mPointMoveInProgress == i + 1)
                     {
-                        points[i].X = e.X;
-                        points[i].Y = e.Y;
+                        points[i].point.X = e.X;
+                        points[i].point.Y = e.Y;
                         TopologyPBox.Refresh();
                         break;
                     }
@@ -192,6 +202,37 @@ namespace TopologyGenerator
 
         }
 
+        private void tooltipadresses_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < points.Count; i++)
+            {
+                if (!netHosts.listOfHosts[i].GetIfRouter())
+                    netHosts.listOfHostRectangles[i].netHost.tip.Show(points[i].text[0], this, points[i].point.X, points[i].point.Y + 20);
+                else
+                {
+                    netHosts.listOfHostRectangles[i].netHost.tip.Show(points[i].text[0], this, points[i].point.X, points[i].point.Y);
+                    netHosts.listOfHostRectangles[i].netHost.adresstip1.Show(points[i].text[1], this, points[i].point.X, points[i].point.Y + 20);
+                    netHosts.listOfHostRectangles[i].netHost.adresstip2.Show(points[i].text[2], this, points[i].point.X, points[i].point.Y-20);
+                }
+            }
+
+        }
+    }
+
+    public class PointToText
+    {
+        public Point point;
+        public List<string> text = new List<string>();
+
+        public PointToText(Point point)
+        {
+            this.point = point;
+        }
+
+        public Point getPoint()
+        {
+            return point;
+        }
 
     }
 }
