@@ -28,41 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.TopologyPBox = new System.Windows.Forms.PictureBox();
             this.CloseButton = new System.Windows.Forms.Button();
             this.screenCaptureButton = new System.Windows.Forms.Button();
             this.tooltipadresses = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.TopologyPBox = new System.Windows.Forms.PictureBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.TopologyPBox)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.groupBox1.Controls.Add(this.TopologyPBox);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(651, 346);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "wygenerowana topologia";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // TopologyPBox
-            // 
-            this.TopologyPBox.BackColor = System.Drawing.Color.White;
-            this.TopologyPBox.Location = new System.Drawing.Point(17, 25);
-            this.TopologyPBox.Name = "TopologyPBox";
-            this.TopologyPBox.Size = new System.Drawing.Size(618, 310);
-            this.TopologyPBox.TabIndex = 0;
-            this.TopologyPBox.TabStop = false;
-            this.TopologyPBox.Paint += new System.Windows.Forms.PaintEventHandler(this.TopologyPBox_Paint);
-            this.TopologyPBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopologyPBox_MouseDown);
-            this.TopologyPBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopologyPBox_MouseMove);
-            this.TopologyPBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopologyPBox_MouseUp);
             // 
             // CloseButton
             // 
@@ -106,6 +79,35 @@
             this.tooltipadresses.UseVisualStyleBackColor = false;
             this.tooltipadresses.Click += new System.EventHandler(this.tooltipadresses_Click);
             // 
+            // TopologyPBox
+            // 
+            this.TopologyPBox.BackColor = System.Drawing.Color.White;
+            this.TopologyPBox.Location = new System.Drawing.Point(17, 25);
+            this.TopologyPBox.Name = "TopologyPBox";
+            this.TopologyPBox.Size = new System.Drawing.Size(618, 310);
+            this.TopologyPBox.TabIndex = 0;
+            this.TopologyPBox.TabStop = false;
+            this.TopologyPBox.Click += new System.EventHandler(this.TopologyPBox_Click);
+            this.TopologyPBox.Paint += new System.Windows.Forms.PaintEventHandler(this.TopologyPBox_Paint);
+            this.TopologyPBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopologyPBox_MouseDown);
+            this.TopologyPBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopologyPBox_MouseMove);
+            this.TopologyPBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopologyPBox_MouseUp);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.groupBox1.Controls.Add(this.TopologyPBox);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(651, 346);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "wygenerowana topologia";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.groupBox1.Resize += new System.EventHandler(this.groupBox1_Resize);
+            // 
             // TopologyWnd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -121,18 +123,19 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Topologia";
             this.Load += new System.EventHandler(this.TopologyWnd_Load_1);
-            this.groupBox1.ResumeLayout(false);
+            this.Resize += new System.EventHandler(this.TopologyWnd_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.TopologyPBox)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox TopologyPBox;
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button screenCaptureButton;
         private System.Windows.Forms.Button tooltipadresses;
+        private System.Windows.Forms.PictureBox TopologyPBox;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

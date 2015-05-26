@@ -146,6 +146,7 @@
             this.Name = "MainWnd";
             this.ShowIcon = false;
             this.Text = "Topology Generator";
+            this.Resize += new System.EventHandler(this.MainWnd_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 

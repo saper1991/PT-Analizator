@@ -217,6 +217,23 @@ namespace TopologyGenerator
             }
 
         }
+
+        private void TopologyWnd_Resize(object sender, EventArgs e)
+        {
+            
+           // groupBox1.Width = this.Width;
+          
+        }
+
+        private void TopologyPBox_Click(object sender, EventArgs e)
+        {
+           // TopologyPBox.Width = this.Width;
+        }
+
+        private void groupBox1_Resize(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class PointToText
