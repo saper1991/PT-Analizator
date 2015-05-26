@@ -38,18 +38,21 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.DarkSlateGray;
             this.groupBox1.Controls.Add(this.TopologyPBox);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(630, 335);
+            this.groupBox1.Size = new System.Drawing.Size(651, 346);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Wygenerowana topologia";
+            this.groupBox1.Text = "wygenerowana topologia";
             // 
             // TopologyPBox
             // 
             this.TopologyPBox.BackColor = System.Drawing.Color.White;
-            this.TopologyPBox.Location = new System.Drawing.Point(6, 19);
+            this.TopologyPBox.Location = new System.Drawing.Point(17, 25);
             this.TopologyPBox.Name = "TopologyPBox";
             this.TopologyPBox.Size = new System.Drawing.Size(618, 310);
             this.TopologyPBox.TabIndex = 0;
@@ -61,29 +64,38 @@
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(474, 364);
+            this.CloseButton.BackColor = System.Drawing.Color.White;
+            this.CloseButton.FlatAppearance.BorderSize = 0;
+            this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.CloseButton.Location = new System.Drawing.Point(486, 375);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(162, 29);
             this.CloseButton.TabIndex = 1;
-            this.CloseButton.Text = "Zamknij okno";
-            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Text = "zamknij okno";
+            this.CloseButton.UseVisualStyleBackColor = false;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // screenCaptureButton
             // 
-            this.screenCaptureButton.Location = new System.Drawing.Point(18, 364);
+            this.screenCaptureButton.BackColor = System.Drawing.Color.White;
+            this.screenCaptureButton.FlatAppearance.BorderSize = 0;
+            this.screenCaptureButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.screenCaptureButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.screenCaptureButton.Location = new System.Drawing.Point(30, 375);
             this.screenCaptureButton.Name = "screenCaptureButton";
             this.screenCaptureButton.Size = new System.Drawing.Size(162, 29);
             this.screenCaptureButton.TabIndex = 2;
-            this.screenCaptureButton.Text = "Zapisz jako obraz";
-            this.screenCaptureButton.UseVisualStyleBackColor = true;
+            this.screenCaptureButton.Text = "zapisz jako obraz";
+            this.screenCaptureButton.UseVisualStyleBackColor = false;
             this.screenCaptureButton.Click += new System.EventHandler(this.screenCaptureButton_Click);
             // 
             // TopologyWnd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(654, 405);
+            this.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.ClientSize = new System.Drawing.Size(675, 416);
             this.ControlBox = false;
             this.Controls.Add(this.screenCaptureButton);
             this.Controls.Add(this.CloseButton);
