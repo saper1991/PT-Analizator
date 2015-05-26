@@ -31,7 +31,9 @@ namespace TopologyGenerator
             ofd.Filter = "Pliki .ethan (*.ethan)|*.ethan|Wszystkie pliki (*.*)|*.*";
             DialogResult dr = ofd.ShowDialog();
 
-            if(dr == DialogResult.OK)
+            bool exists = false;
+
+            if (dr == DialogResult.OK)
             {
 
                 FileStream fs = new FileStream(ofd.FileName, FileMode.Open);
@@ -39,88 +41,98 @@ namespace TopologyGenerator
 
                 NetHost newhost = null;
 
-                if (ofd.SafeFileName[0] == 'R')
+                for (int i = 0; i < netHosts.listOfHosts.Count; i++)
                 {
-                    newhost = new NetHost(ofd.SafeFileName, true);
-                }
-                else
-                {
-                    newhost = new NetHost(ofd.SafeFileName, false);
-                }
-
-                while(!sr.EndOfStream)
-                {
-                    string tmp = sr.ReadLine();
-                    int count = 0;
-
-                    string eth = "";
-                    for(; count < tmp.Length ; count++)
+                    if (netHosts.listOfHosts[i].GetFileName() == ofd.SafeFileName)
                     {
-                        if(tmp[count] != '\t')
-                        {
-                            eth += tmp[count];
-                        }
-                        else
-                        {
-                            count++;
-                            break;
-                        }
+                        exists = true;
                     }
-
-                    string ethmac = "";
-                    for (; count < tmp.Length; count++)
-                    {
-                        if (tmp[count] != '\t')
-                        {
-                            ethmac += tmp[count];
-                        }
-                        else
-                        {
-                            count++;
-                            break;
-                        }
-                    }
-
-                    string consmac = "";
-                    for (; count < tmp.Length; count++)
-                    {
-                        if (tmp[count] != '\t')
-                        {
-                            consmac += tmp[count];
-                        }
-                        else
-                        {
-                            count++;
-                            break;
-                        }
-                    }
-
-                    for (; count < tmp.Length; count++)
-                    {
-                        if (tmp[count] != '\t')
-                        {
-                            eth += tmp[count];
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-
-                    if(eth.Contains("true"))
-                    {
-                        eth = eth.Substring(0, 4);
-                    }
-
-                    newhost.addRecord(new HostRecord(eth, ethmac, consmac, true));
-
                 }
 
-                netHosts.addNetHost(newhost);
-                ListOfFiles.Add(newhost);
-                
-                listOfFilesListBox.Items.Add(ofd.SafeFileName);
+                if (!exists)
+                {
 
+                    if (ofd.SafeFileName[0] == 'R')
+                    {
+                        newhost = new NetHost(ofd.SafeFileName, true);
+                    }
+                    else
+                    {
+                        newhost = new NetHost(ofd.SafeFileName, false);
+                    }
+
+                    while (!sr.EndOfStream)
+                    {
+                        string tmp = sr.ReadLine();
+                        int count = 0;
+
+                        string eth = "";
+                        for (; count < tmp.Length; count++)
+                        {
+                            if (tmp[count] != '\t')
+                            {
+                                eth += tmp[count];
+                            }
+                            else
+                            {
+                                count++;
+                                break;
+                            }
+                        }
+
+                        string ethmac = "";
+                        for (; count < tmp.Length; count++)
+                        {
+                            if (tmp[count] != '\t')
+                            {
+                                ethmac += tmp[count];
+                            }
+                            else
+                            {
+                                count++;
+                                break;
+                            }
+                        }
+
+                        string consmac = "";
+                        for (; count < tmp.Length; count++)
+                        {
+                            if (tmp[count] != '\t')
+                            {
+                                consmac += tmp[count];
+                            }
+                            else
+                            {
+                                count++;
+                                break;
+                            }
+                        }
+
+                        for (; count < tmp.Length; count++)
+                        {
+                            if (tmp[count] != '\t')
+                            {
+                                eth += tmp[count];
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+
+                        if (eth.Contains("true"))
+                        {
+                            eth = eth.Substring(0, 4);
+                        }
+
+                        newhost.addRecord(new HostRecord(eth, ethmac, consmac, true));
+
+                    }
+
+                    netHosts.addNetHost(newhost);
+
+                    listOfFilesListBox.Items.Add(ofd.SafeFileName);
+                }
                 sr.Close();
                 fs.Close();
             }
@@ -135,11 +147,11 @@ namespace TopologyGenerator
         {
             string selected = (string)listOfFilesListBox.SelectedItem;
 
-            for(int i = 0 ; i < ListOfFiles.Count ; i++)
+            for (int i = 0; i < netHosts.listOfHosts.Count; i++)
             {
-                if(ListOfFiles[i].GetFileName() == selected)
+                if (netHosts.listOfHosts[i].GetFileName() == selected)
                 {
-                    ListOfFiles.RemoveAt(i);
+                    netHosts.listOfHosts.RemoveAt(i);
                     break;
                 }
             }
@@ -149,12 +161,12 @@ namespace TopologyGenerator
 
         private void GenerateButton_Click(object sender, EventArgs e)
         {
-            for(int i = 0 ; i < ListOfFiles.Count ; i++)
+            for (int i = 0; i < netHosts.listOfHosts.Count; i++)
             {
-                ListOfFiles[i].SetHosts(getHostNames(getConnections(ListOfFiles[i].GetFileName())));
+                netHosts.listOfHosts[i].SetHosts(getHostNames(getConnections(netHosts.listOfHosts[i].GetFileName())));
             }
 
-            Matrix matr = new Matrix(ListOfFiles);
+            Matrix matr = new Matrix(netHosts.listOfHosts);
 
             TopologyWnd tplg = new TopologyWnd(matr, netHosts);
             tplg.Show();
@@ -163,17 +175,17 @@ namespace TopologyGenerator
         private string[] getConnections(string Filename)
         {
             NetHost Selected = null;
-            for(int i = 0 ; i < ListOfFiles.Count ; i++)
+            for (int i = 0; i < netHosts.listOfHosts.Count; i++)
             {
-                if(ListOfFiles[i].GetFileName().Contains(Filename))
+                if (netHosts.listOfHosts[i].GetFileName().Contains(Filename))
                 {
-                    Selected = ListOfFiles[i];
+                    Selected = netHosts.listOfHosts[i];
                     break;
                 }
             }
 
             List<string> result = new List<string>();
-            for(int i = 0 ; i < Selected.ListOfRecords.Count ; i++)
+            for (int i = 0; i < Selected.ListOfRecords.Count; i++)
             {
                 result.Add(Selected.ListOfRecords[i].GetCons());
             }
@@ -185,17 +197,17 @@ namespace TopologyGenerator
         {
             List<string> results = new List<string>();
 
-            for(int i = 0 ; i < input.Length ; i++)
+            for (int i = 0; i < input.Length; i++)
             {
                 string current = input[i];
 
-                for(int a = 0 ; a < ListOfFiles.Count ; a++)
+                for (int a = 0; a < netHosts.listOfHosts.Count; a++)
                 {
-                    for(int b = 0 ; b < ListOfFiles[a].ListOfRecords.Count ; b++)
+                    for (int b = 0; b < netHosts.listOfHosts[a].ListOfRecords.Count; b++)
                     {
-                        if(ListOfFiles[a].ListOfRecords[b].GetEthMAC().Contains(current))
+                        if (netHosts.listOfHosts[a].ListOfRecords[b].GetEthMAC().Contains(current))
                         {
-                            results.Add(ListOfFiles[a].GetFileName());
+                            results.Add(netHosts.listOfHosts[a].GetFileName());
                         }
                     }
                 }
@@ -207,6 +219,7 @@ namespace TopologyGenerator
         private void clearAllButton_Click(object sender, EventArgs e)
         {
             listOfFilesListBox.Items.Clear();
+            netHosts.listOfHosts.Clear();
         }
     }
 }

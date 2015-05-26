@@ -48,6 +48,7 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "wygenerowana topologia";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // TopologyPBox
             // 
@@ -101,6 +102,9 @@
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.groupBox1);
             this.Name = "TopologyWnd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Topologia";
+            this.Load += new System.EventHandler(this.TopologyWnd_Load_1);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TopologyPBox)).EndInit();
             this.ResumeLayout(false);

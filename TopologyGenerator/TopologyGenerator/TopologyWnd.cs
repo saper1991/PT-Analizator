@@ -44,7 +44,7 @@ namespace TopologyGenerator
 
         public static Image resizeImage(Image imgToResize, Size size)
         {
-           return (Image)(new Bitmap(imgToResize, size));
+            return (Image)(new Bitmap(imgToResize, size));
         }
 
         private void TopologyPBox_Paint(object sender, PaintEventArgs e)
@@ -65,7 +65,7 @@ namespace TopologyGenerator
             for (int i = 0; i < count; i++)
             {
                 Image newImage = null;
-                if(netHosts.getListOfHosts()[i].GetIfRouter() == false)
+                if (netHosts.getListOfHosts()[i].GetIfRouter() == false)
                     newImage = Image.FromFile("1.png");
                 else
                     newImage = Image.FromFile("11.png");
@@ -134,7 +134,7 @@ namespace TopologyGenerator
                     }
                 }
             }
-            
+
         }
 
         private void TopologyPBox_MouseUp(object sender, MouseEventArgs e)
@@ -167,13 +167,28 @@ namespace TopologyGenerator
                     bmp.Save(path);
                     //@"C:\Users\Laura\Desktop\screenshot.png"
                 }
-               
+
                 MessageBox.Show("Obraz zapisano pomyślnie");
-                
+
             }
 
-           
-            
+
+
+
+        }
+
+        private void TopologyWnd_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TopologyWnd_Load_1(object sender, EventArgs e)
+        {
 
         }
 
