@@ -162,6 +162,8 @@ namespace TopologyGenerator
         {
 
             var frm = Form.ActiveForm;
+            var pb = TopologyPBox;
+            var gr = groupBox1;
 
             SaveFileDialog save = new SaveFileDialog();
             save.Title = "Zapisz obraz";
@@ -171,9 +173,9 @@ namespace TopologyGenerator
             {
                 string path = save.FileName;
 
-                using (var bmp = new Bitmap(frm.Width, frm.Height))
+                using (var bmp = new Bitmap(pb.Width, pb.Height))
                 {
-                    frm.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                    pb.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
                     bmp.Save(path);
                     //@"C:\Users\Laura\Desktop\screenshot.png"
                 }
