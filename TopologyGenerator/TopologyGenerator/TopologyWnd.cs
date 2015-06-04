@@ -28,8 +28,8 @@ namespace TopologyGenerator
         public TopologyWnd(Matrix input, NetHosts netHosts)
         {
             InitializeComponent();
-            this.MaximumSize = this.Size;
-            this.MinimumSize = this.Size;
+            //this.MaximumSize = this.Size;
+            //this.MinimumSize = this.Size;
             this.netHosts = netHosts;
 
             matrix = input.getMatrix();
@@ -223,13 +223,17 @@ namespace TopologyGenerator
         private void TopologyWnd_Resize(object sender, EventArgs e)
         {
             
-           // groupBox1.Width = this.Width;
+            groupBox1.Width = this.Width;
+            TopologyPBox.Width = this.Width;
+
+            groupBox1.Height = this.Height;
+            TopologyPBox.Height = this.Height;
           
         }
 
         private void TopologyPBox_Click(object sender, EventArgs e)
         {
-           // TopologyPBox.Width = this.Width;
+            
         }
 
         private void groupBox1_Resize(object sender, EventArgs e)

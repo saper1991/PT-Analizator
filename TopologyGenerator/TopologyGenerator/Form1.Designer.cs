@@ -41,6 +41,9 @@
             // 
             this.DeleteFileButton.BackColor = System.Drawing.Color.White;
             this.DeleteFileButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.DeleteFileButton.FlatAppearance.BorderSize = 0;
+            this.DeleteFileButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Fuchsia;
+            this.DeleteFileButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.DeleteFileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteFileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.DeleteFileButton.Location = new System.Drawing.Point(24, 175);
@@ -56,8 +59,8 @@
             this.LoadFileButton.BackColor = System.Drawing.Color.White;
             this.LoadFileButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.LoadFileButton.FlatAppearance.BorderSize = 0;
-            this.LoadFileButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.LoadFileButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.LoadFileButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Fuchsia;
+            this.LoadFileButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.LoadFileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoadFileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoadFileButton.Location = new System.Drawing.Point(24, 12);
@@ -80,6 +83,9 @@
             // 
             this.GenerateButton.BackColor = System.Drawing.Color.White;
             this.GenerateButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.GenerateButton.FlatAppearance.BorderSize = 0;
+            this.GenerateButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Fuchsia;
+            this.GenerateButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.GenerateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GenerateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.GenerateButton.Location = new System.Drawing.Point(24, 73);
@@ -94,6 +100,9 @@
             // 
             this.ExitButton.BackColor = System.Drawing.Color.White;
             this.ExitButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.ExitButton.FlatAppearance.BorderSize = 0;
+            this.ExitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Fuchsia;
+            this.ExitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ExitButton.Location = new System.Drawing.Point(24, 295);
@@ -108,6 +117,9 @@
             // 
             this.clearAllButton.BackColor = System.Drawing.Color.White;
             this.clearAllButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.clearAllButton.FlatAppearance.BorderSize = 0;
+            this.clearAllButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Fuchsia;
+            this.clearAllButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.clearAllButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearAllButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.clearAllButton.Location = new System.Drawing.Point(24, 236);

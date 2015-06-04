@@ -41,9 +41,11 @@
             // 
             this.CloseButton.BackColor = System.Drawing.Color.White;
             this.CloseButton.FlatAppearance.BorderSize = 0;
+            this.CloseButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Fuchsia;
+            this.CloseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.CloseButton.Location = new System.Drawing.Point(486, 375);
+            this.CloseButton.Location = new System.Drawing.Point(501, 22);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(162, 29);
             this.CloseButton.TabIndex = 1;
@@ -55,9 +57,11 @@
             // 
             this.screenCaptureButton.BackColor = System.Drawing.Color.White;
             this.screenCaptureButton.FlatAppearance.BorderSize = 0;
+            this.screenCaptureButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Fuchsia;
+            this.screenCaptureButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.screenCaptureButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.screenCaptureButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.screenCaptureButton.Location = new System.Drawing.Point(30, 375);
+            this.screenCaptureButton.Location = new System.Drawing.Point(12, 22);
             this.screenCaptureButton.Name = "screenCaptureButton";
             this.screenCaptureButton.Size = new System.Drawing.Size(162, 29);
             this.screenCaptureButton.TabIndex = 2;
@@ -69,9 +73,11 @@
             // 
             this.tooltipadresses.BackColor = System.Drawing.Color.White;
             this.tooltipadresses.FlatAppearance.BorderSize = 0;
+            this.tooltipadresses.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Fuchsia;
+            this.tooltipadresses.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.tooltipadresses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tooltipadresses.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tooltipadresses.Location = new System.Drawing.Point(261, 375);
+            this.tooltipadresses.Location = new System.Drawing.Point(252, 22);
             this.tooltipadresses.Name = "tooltipadresses";
             this.tooltipadresses.Size = new System.Drawing.Size(162, 29);
             this.tooltipadresses.TabIndex = 3;
@@ -99,7 +105,7 @@
             this.groupBox1.Controls.Add(this.TopologyPBox);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 76);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(651, 346);
             this.groupBox1.TabIndex = 0;
@@ -113,7 +119,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.ClientSize = new System.Drawing.Size(675, 416);
+            this.ClientSize = new System.Drawing.Size(679, 441);
             this.ControlBox = false;
             this.Controls.Add(this.tooltipadresses);
             this.Controls.Add(this.screenCaptureButton);
