@@ -209,7 +209,19 @@ namespace TopologyGenerator
             for (int i = 0; i < points.Count; i++)
             {
                 if (!netHosts.listOfHosts[i].GetIfRouter())
-                    netHosts.listOfHostRectangles[i].netHost.tip.Show(points[i].text[0], this, points[i].point.X, points[i].point.Y + 20);
+                {
+                   // netHosts.listOfHostRectangles[i].netHost.tip.Show(points[i].text[0], this, points[i].point.X, points[i].point.Y + 20);
+                    netHosts.listOfHostRectangles[i].netHost.labelList[0].Visible = true;
+                    netHosts.listOfHostRectangles[i].netHost.labelList[0].Location = new Point(points[i].point.X, points[i].point.Y + 20);
+                    netHosts.listOfHostRectangles[i].netHost.labelList[0].Show();
+                    netHosts.listOfHostRectangles[i].netHost.labelList[0].Refresh();
+                    netHosts.listOfHostRectangles[i].netHost.labelList[0].Size = new System.Drawing.Size(173, 20);
+                    netHosts.listOfHostRectangles[i].netHost.labelList[0].TabIndex = i;
+                    Controls.Add(netHosts.listOfHostRectangles[i].netHost.labelList[0]);
+                    this.Refresh();
+                    this.Show();
+
+                }
                 else
                 {
                     netHosts.listOfHostRectangles[i].netHost.tip.Show(points[i].text[0], this, points[i].point.X, points[i].point.Y);
@@ -223,11 +235,11 @@ namespace TopologyGenerator
         private void TopologyWnd_Resize(object sender, EventArgs e)
         {
             
-            groupBox1.Width = this.Width;
-            TopologyPBox.Width = this.Width;
+            groupBox1.Width = this.Width - 50;
+            TopologyPBox.Width = this.Width - 80;
 
-            groupBox1.Height = this.Height;
-            TopologyPBox.Height = this.Height;
+            groupBox1.Height = this.Height - 130;
+            TopologyPBox.Height = this.Height - 170;
           
         }
 

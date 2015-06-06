@@ -126,6 +126,10 @@ namespace TopologyGenerator
                         }
 
                         newhost.addRecord(new HostRecord(eth, ethmac, consmac, true));
+                        Label hostLabel = new Label();
+                        hostLabel.Text = consmac;
+                        hostLabel.Visible = false;
+                        newhost.labelList.Add(hostLabel);
 
                     }
 
