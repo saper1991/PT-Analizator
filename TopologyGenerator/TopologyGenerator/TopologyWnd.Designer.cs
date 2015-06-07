@@ -33,6 +33,7 @@
             this.tooltipadresses = new System.Windows.Forms.Button();
             this.TopologyPBox = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TopologyPBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -45,7 +46,7 @@
             this.CloseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
             this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.CloseButton.Location = new System.Drawing.Point(501, 22);
+            this.CloseButton.Location = new System.Drawing.Point(501, 12);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(162, 29);
             this.CloseButton.TabIndex = 1;
@@ -114,6 +115,21 @@
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             this.groupBox1.Resize += new System.EventHandler(this.groupBox1_Resize);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Fuchsia;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Fuchsia;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button1.Location = new System.Drawing.Point(501, 47);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(162, 29);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "zamknij program";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // TopologyWnd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -121,6 +137,7 @@
             this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.ClientSize = new System.Drawing.Size(679, 441);
             this.ControlBox = false;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tooltipadresses);
             this.Controls.Add(this.screenCaptureButton);
             this.Controls.Add(this.CloseButton);
@@ -143,5 +160,6 @@
         private System.Windows.Forms.Button tooltipadresses;
         private System.Windows.Forms.PictureBox TopologyPBox;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -156,6 +156,8 @@ namespace TopologyGenerator
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+            MainWnd okno = new MainWnd();
+            okno.Show();
         }
 
         private void screenCaptureButton_Click(object sender, EventArgs e)

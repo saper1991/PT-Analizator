@@ -73,10 +73,12 @@
             // 
             // listOfFilesListBox
             // 
+            this.listOfFilesListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listOfFilesListBox.FormattingEnabled = true;
+            this.listOfFilesListBox.ItemHeight = 16;
             this.listOfFilesListBox.Location = new System.Drawing.Point(215, 53);
             this.listOfFilesListBox.Name = "listOfFilesListBox";
-            this.listOfFilesListBox.Size = new System.Drawing.Size(201, 290);
+            this.listOfFilesListBox.Size = new System.Drawing.Size(201, 276);
             this.listOfFilesListBox.TabIndex = 1;
             // 
             // GenerateButton

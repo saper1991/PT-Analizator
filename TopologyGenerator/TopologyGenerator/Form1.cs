@@ -174,6 +174,7 @@ namespace TopologyGenerator
 
             TopologyWnd tplg = new TopologyWnd(matr, netHosts);
             tplg.Show();
+            this.Hide();
         }
 
         private string[] getConnections(string Filename)
