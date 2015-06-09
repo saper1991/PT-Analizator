@@ -28,8 +28,6 @@ namespace TopologyGenerator
         public TopologyWnd(Matrix input, NetHosts netHosts)
         {
             InitializeComponent();
-            //this.MaximumSize = this.Size;
-            //this.MinimumSize = this.Size;
             this.netHosts = netHosts;
 
             matrix = input.getMatrix();
@@ -82,13 +80,11 @@ namespace TopologyGenerator
                 Rectangle source = new Rectangle(points[i].point.X - radius, points[i].point.Y - radius, radius * 2, radius + radius / 2 + radius / 4);
                 newImage = resizeImage(newImage, new Size(40, 30));
 
-                GraphicsUnit units = GraphicsUnit.Pixel;
                 //e.Graphics.FillRectangle(Brushes.White, rectangle);
                 //e.Graphics.DrawRectangle(Pens.Black, rectangle);
 
 
                 e.Graphics.DrawImageUnscaledAndClipped(newImage, rectangle);
-                //rectangles.Add(rectangle);
                 netHosts.addSetHostRectangle(netHosts.getListOfHosts()[i], rectangle);
                 for (int j = 0; j < netHosts.listOfHostRectangles[i].netHost.labelList.Count; j++)
                 {
@@ -197,7 +193,6 @@ namespace TopologyGenerator
                 {
                     pb.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
                     bmp.Save(path);
-                    //@"C:\Users\Laura\Desktop\screenshot.png"
                 }
 
                 MessageBox.Show("Obraz zapisano pomyślnie");

@@ -48,93 +48,100 @@ namespace TopologyGenerator
                         exists = true;
                     }
                 }
-
-                if (!exists)
+                try
                 {
 
-                    if (ofd.SafeFileName[0] == 'R')
+                
+                    if (!exists)
                     {
-                        newhost = new NetHost(ofd.SafeFileName, true);
+
+                        if (ofd.SafeFileName[0] == 'R')
+                        {
+                            newhost = new NetHost(ofd.SafeFileName, true);
+                        }
+                        else
+                        {
+                            newhost = new NetHost(ofd.SafeFileName, false);
+                        }
+
+                        while (!sr.EndOfStream)
+                        {
+                            string tmp = sr.ReadLine();
+                            int count = 0;
+
+                            string eth = "";
+                            for (; count < tmp.Length; count++)
+                            {
+                                if (tmp[count] != '\t')
+                                {
+                                    eth += tmp[count];
+                                }
+                                else
+                                {
+                                    count++;
+                                    break;
+                                }
+                            }
+
+                            string ethmac = "";
+                            for (; count < tmp.Length; count++)
+                            {
+                                if (tmp[count] != '\t')
+                                {
+                                    ethmac += tmp[count];
+                                }
+                                else
+                                {
+                                    count++;
+                                    break;
+                                }
+                            }
+
+                            string consmac = "";
+                            for (; count < tmp.Length; count++)
+                            {
+                                if (tmp[count] != '\t')
+                                {
+                                    consmac += tmp[count];
+                                }
+                                else
+                                {
+                                    count++;
+                                    break;
+                                }
+                            }
+
+                            for (; count < tmp.Length; count++)
+                            {
+                                if (tmp[count] != '\t')
+                                {
+                                    eth += tmp[count];
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+
+                            if (eth.Contains("true"))
+                            {
+                                eth = eth.Substring(0, 4);
+                            }
+
+                            newhost.addRecord(new HostRecord(eth, ethmac, consmac, true));
+                            Label hostLabel = new Label();
+                            hostLabel.Text = consmac;
+                            hostLabel.Visible = false;
+                            newhost.labelList.Add(hostLabel);
+
+                        }
+                        newhost.hostLabel.Text = ofd.SafeFileName.Split('.')[0];
+                        netHosts.addNetHost(newhost);
+                        listOfFilesListBox.Items.Add(ofd.SafeFileName);
                     }
-                    else
-                    {
-                        newhost = new NetHost(ofd.SafeFileName, false);
-                    }
-
-                    while (!sr.EndOfStream)
-                    {
-                        string tmp = sr.ReadLine();
-                        int count = 0;
-
-                        string eth = "";
-                        for (; count < tmp.Length; count++)
-                        {
-                            if (tmp[count] != '\t')
-                            {
-                                eth += tmp[count];
-                            }
-                            else
-                            {
-                                count++;
-                                break;
-                            }
-                        }
-
-                        string ethmac = "";
-                        for (; count < tmp.Length; count++)
-                        {
-                            if (tmp[count] != '\t')
-                            {
-                                ethmac += tmp[count];
-                            }
-                            else
-                            {
-                                count++;
-                                break;
-                            }
-                        }
-
-                        string consmac = "";
-                        for (; count < tmp.Length; count++)
-                        {
-                            if (tmp[count] != '\t')
-                            {
-                                consmac += tmp[count];
-                            }
-                            else
-                            {
-                                count++;
-                                break;
-                            }
-                        }
-
-                        for (; count < tmp.Length; count++)
-                        {
-                            if (tmp[count] != '\t')
-                            {
-                                eth += tmp[count];
-                            }
-                            else
-                            {
-                                break;
-                            }
-                        }
-
-                        if (eth.Contains("true"))
-                        {
-                            eth = eth.Substring(0, 4);
-                        }
-
-                        newhost.addRecord(new HostRecord(eth, ethmac, consmac, true));
-                        Label hostLabel = new Label();
-                        hostLabel.Text = consmac;
-                        hostLabel.Visible = false;
-                        newhost.labelList.Add(hostLabel);
-
-                    }
-                    newhost.hostLabel.Text = ofd.SafeFileName.Split('.')[0];
-                    netHosts.addNetHost(newhost);
-                    listOfFilesListBox.Items.Add(ofd.SafeFileName);
+                } catch(Exception)
+                {
+                    MessageBox.Show("Format pliku wejściowego jest nieprawidłowy!!!");
                 }
                 sr.Close();
                 fs.Close();
