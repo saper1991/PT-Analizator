@@ -171,6 +171,15 @@ namespace TopologyGenerator
 
         private void screenCaptureButton_Click(object sender, EventArgs e)
         {
+            for (int j = 0; j < netHosts.listOfHostRectangles.Count; j++)
+            {
+                netHosts.listOfHostRectangles[j].netHost.hostLabel.Location = new Point(netHosts.listOfHostRectangles[j].rectangle.X , netHosts.listOfHostRectangles[j].rectangle.Y - 20); ;
+                    netHosts.listOfHostRectangles[j].netHost.hostLabel.Size = new System.Drawing.Size(173, 20);
+                    netHosts.listOfHostRectangles[j].netHost.hostLabel.TabIndex = j;
+                    netHosts.listOfHostRectangles[j].netHost.hostLabel.ForeColor = Color.Black;
+                    netHosts.listOfHostRectangles[j].netHost.hostLabel.BackColor = Color.Transparent;
+                    netHosts.listOfHostRectangles[j].netHost.hostLabel.Show();
+            }
 
             var frm = Form.ActiveForm;
             var pb = TopologyPBox;
@@ -192,7 +201,10 @@ namespace TopologyGenerator
                 }
 
                 MessageBox.Show("Obraz zapisano pomyślnie");
-
+                for (int j = 0; j < netHosts.listOfHostRectangles.Count; j++)
+                {
+                    netHosts.listOfHostRectangles[j].netHost.hostLabel.Hide();
+                }
             }
 
 
