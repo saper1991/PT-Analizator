@@ -132,9 +132,8 @@ namespace TopologyGenerator
                         newhost.labelList.Add(hostLabel);
 
                     }
-
+                    newhost.hostLabel.Text = ofd.SafeFileName.Split('.')[0];
                     netHosts.addNetHost(newhost);
-
                     listOfFilesListBox.Items.Add(ofd.SafeFileName);
                 }
                 sr.Close();

@@ -86,9 +86,15 @@ namespace TopologyGenerator
                 //e.Graphics.FillRectangle(Brushes.White, rectangle);
                 //e.Graphics.DrawRectangle(Pens.Black, rectangle);
 
+
                 e.Graphics.DrawImageUnscaledAndClipped(newImage, rectangle);
                 //rectangles.Add(rectangle);
                 netHosts.addSetHostRectangle(netHosts.getListOfHosts()[i], rectangle);
+                for (int j = 0; j < netHosts.listOfHostRectangles[i].netHost.labelList.Count; j++)
+                {
+                    TopologyPBox.Controls.Add(netHosts.listOfHostRectangles[i].netHost.labelList[j]);
+                }
+                TopologyPBox.Controls.Add(netHosts.listOfHostRectangles[i].netHost.hostLabel);
             }
         }
 
@@ -122,14 +128,17 @@ namespace TopologyGenerator
                     if (netHosts.listOfHostRectangles[j].rectangle.Contains(e.Location))
                     {
                         location = e.Location;
-                        string name = netHosts.listOfHostRectangles[j].netHost.GetFileName();
-                        netHosts.listOfHostRectangles[j].netHost.tip.Show(name, this, e.X, e.Y + 30);
+
+                        netHosts.listOfHostRectangles[j].netHost.hostLabel.Location = new Point(e.X - 15, e.Y - 40); ;
+                        netHosts.listOfHostRectangles[j].netHost.hostLabel.Size = new System.Drawing.Size(173, 20);
+                        netHosts.listOfHostRectangles[j].netHost.hostLabel.TabIndex = j;
+                        netHosts.listOfHostRectangles[j].netHost.hostLabel.ForeColor = Color.Black;
+                        netHosts.listOfHostRectangles[j].netHost.hostLabel.BackColor = Color.Transparent;
+                        netHosts.listOfHostRectangles[j].netHost.hostLabel.Show();
                     }
                     else
                     {
-                        netHosts.listOfHostRectangles[j].netHost.tip.Hide(this);
-                        netHosts.listOfHostRectangles[j].netHost.adresstip1.Hide(this);
-                        netHosts.listOfHostRectangles[j].netHost.adresstip2.Hide(this);
+                        netHosts.listOfHostRectangles[j].netHost.hostLabel.Hide();
                     }
                 }
 
@@ -212,42 +221,58 @@ namespace TopologyGenerator
             {
                 if (!netHosts.listOfHosts[i].GetIfRouter())
                 {
-                   // netHosts.listOfHostRectangles[i].netHost.tip.Show(points[i].text[0], this, points[i].point.X, points[i].point.Y + 20);
-                    netHosts.listOfHostRectangles[i].netHost.labelList[0].Visible = true;
-                    netHosts.listOfHostRectangles[i].netHost.labelList[0].Location = new Point(points[i].point.X, points[i].point.Y + 20);
-                    netHosts.listOfHostRectangles[i].netHost.labelList[0].Show();
-                    netHosts.listOfHostRectangles[i].netHost.labelList[0].Refresh();
+                    // netHosts.listOfHostRectangles[i].netHost.tip.Show(points[i].text[0], this, points[i].point.X, points[i].point.Y + 20);
+                    //netHosts.listOfHostRectangles[i].netHost.labelList[0].Visible = true;
+                    netHosts.listOfHostRectangles[i].netHost.labelList[0].Location = new Point(points[i].point.X + 20, points[i].point.Y - 10);
+
                     netHosts.listOfHostRectangles[i].netHost.labelList[0].Size = new System.Drawing.Size(173, 20);
                     netHosts.listOfHostRectangles[i].netHost.labelList[0].TabIndex = i;
-                    Controls.Add(netHosts.listOfHostRectangles[i].netHost.labelList[0]);
-                    this.Refresh();
-                    this.Show();
+                    netHosts.listOfHostRectangles[i].netHost.labelList[0].ForeColor = Color.Black;
+                    netHosts.listOfHostRectangles[i].netHost.labelList[0].BackColor = Color.Transparent;
+                    
+                    //TopologyPBox.Controls.Add(netHosts.listOfHostRectangles[i].netHost.labelList[0]);
+                    if (netHosts.listOfHostRectangles[i].netHost.labelList[0].Visible == false)
+                        netHosts.listOfHostRectangles[i].netHost.labelList[0].Show();
+                    else
+                        netHosts.listOfHostRectangles[i].netHost.labelList[0].Hide();
 
                 }
                 else
                 {
-                    netHosts.listOfHostRectangles[i].netHost.tip.Show(points[i].text[0], this, points[i].point.X, points[i].point.Y);
-                    netHosts.listOfHostRectangles[i].netHost.adresstip1.Show(points[i].text[1], this, points[i].point.X, points[i].point.Y + 20);
-                    netHosts.listOfHostRectangles[i].netHost.adresstip2.Show(points[i].text[2], this, points[i].point.X, points[i].point.Y-20);
+                    for (int j = 0; j < netHosts.listOfHostRectangles[i].netHost.labelList.Count; j++)
+                    {
+                        netHosts.listOfHostRectangles[i].netHost.labelList[j].Location = new Point(points[i].point.X + 20, points[i].point.Y + 20 - 20 * (netHosts.listOfHostRectangles[i].netHost.labelList.Count - j));
+
+                        netHosts.listOfHostRectangles[i].netHost.labelList[j].Size = new System.Drawing.Size(173, 20);
+                        netHosts.listOfHostRectangles[i].netHost.labelList[j].TabIndex = i;
+                        netHosts.listOfHostRectangles[i].netHost.labelList[j].ForeColor = Color.Black;
+                        netHosts.listOfHostRectangles[i].netHost.labelList[j].BackColor = Color.Transparent;
+
+                        //TopologyPBox.Controls.Add(netHosts.listOfHostRectangles[i].netHost.labelList[0]);
+                        if (netHosts.listOfHostRectangles[i].netHost.labelList[j].Visible == false)
+                            netHosts.listOfHostRectangles[i].netHost.labelList[j].Show();
+                        else
+                            netHosts.listOfHostRectangles[i].netHost.labelList[j].Hide();
+                    }
                 }
             }
-
+            TopologyPBox.Refresh();
         }
 
         private void TopologyWnd_Resize(object sender, EventArgs e)
         {
-            
+
             groupBox1.Width = this.Width - 50;
             TopologyPBox.Width = this.Width - 80;
 
             groupBox1.Height = this.Height - 130;
             TopologyPBox.Height = this.Height - 170;
-          
+
         }
 
         private void TopologyPBox_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void groupBox1_Resize(object sender, EventArgs e)
